@@ -1,0 +1,51 @@
+
+consul {
+  address = "127.0.0.1:8500"
+  retry {
+    enabled = true
+    attempts = 12
+    backoff = "250ms"
+    max_backoff = "1m"
+  }
+}
+
+log_level = "warn"
+
+wait {
+  min = "5s"
+  max = "10s"
+}
+
+syslog {
+  enabled = true
+  facility = "LOCAL5"
+}
+
+exec {
+  command = "{{ CONSUL_BIN_FILE }}"
+  splay = "5s"
+
+  env {
+    pristine = false
+    custom = ["PATH=$PATH:{{ CONSUL_BIN_FILE }}"]
+  }
+
+  reload_signal = ""
+  kill_signal = "SIGINT"
+  kill_timeout = "2s"
+}
+
+template {
+  source = "{{ CONSUL_QUOTA_DIR }}/{{ CONSUL_TPL_CONFIG }}"
+  destination = "{{ CONSUL_QUOTA_DIR }}/{{ CONSUL_XML_CONFIG }}"
+  create_dest_dirs = true
+  command = "restart service consul-template"
+  command_timeout = "60s"
+  error_on_missing_key = false
+  perms = 0600
+  backup = true
+  wait {
+    min = "2s"
+    max = "10s"
+  }
+}

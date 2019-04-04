@@ -1,0 +1,7 @@
+---
+- name: started consul-template.service
+  systemd:
+    state: restarted
+    enabled: yes
+    name: consul-template
+  become: true
