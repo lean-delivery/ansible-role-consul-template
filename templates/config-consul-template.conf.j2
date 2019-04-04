@@ -39,11 +39,11 @@ template {
   source = "{{ CONSUL_QUOTA_DIR }}/{{ CONSUL_TPL_CONFIG }}"
   destination = "{{ CONSUL_QUOTA_DIR }}/{{ CONSUL_XML_CONFIG }}"
   create_dest_dirs = true
-  command = "restart service consul-template"
+  command = "service ggr restart"
   command_timeout = "60s"
   error_on_missing_key = false
   perms = 0600
-  backup = true
+  backup = false
   wait {
     min = "2s"
     max = "10s"

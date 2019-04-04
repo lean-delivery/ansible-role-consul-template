@@ -2,21 +2,27 @@
 - name: Download and Unarchive a file consul-template
   unarchive:
     src: "{{ CONSUL_TEMPLATE_URL }}"
-    dest: /usr/local/bin/
+    dest: "{{ BIN_DIR }}"
     remote_src: yes
     owner: "{{ CONSUL_TEMPLATE_USER }}"
     mode: 0755
   become: true
 
+- name: Create configuration directory
+  file:
+    path: "{{ CONSUL_TEMPLATE_CONFIG_PATH }}"
+    owner: "{{ CONSUL_TEMPLATE_USER }}"
+    state: directory
+
 - name: Copy config file for consul-template
   template:
     src: "{{ CONSUL_TEMPLATE_CONFIG }}.j2"
-    dest: "{{ BIN_DIR }}/{{ CONSUL_TEMPLATE_CONFIG }}"
+    dest: "{{ CONSUL_TEMPLATE_CONFIG_PATH }}/{{ CONSUL_TEMPLATE_CONFIG }}"
     owner: "{{ CONSUL_TEMPLATE_USER }}"
     mode: 0755
   become: true
 
-- name: Solr | Create init.d solrd
+- name: Create service
   template:
     src: consul-template.service.j2
     dest: "{{ START_SCRIPT_PATH }}/consul-template.service"
