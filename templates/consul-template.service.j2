@@ -3,7 +3,6 @@ Description=Consul Template Jobs
 
 [Service]
 Type=simple
-User=consul
 ExecStart="{{ CONSUL_BIN_FILE }}" -config "{{ CONSUL_TEMPLATE_CONFIG_PATH }}/{{ CONSUL_TEMPLATE_CONFIG }}"
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -15 $MAINPID
