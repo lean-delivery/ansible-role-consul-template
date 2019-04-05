@@ -31,3 +31,8 @@
   become: true
   notify:
     - started consul-template.service
+
+- name: Add additional groups for user 'consul'
+  user:
+    name: consul
+    groups: "{{ CONSUL_TEMPLATE_ADDITIONAL_GROUPS }}"
