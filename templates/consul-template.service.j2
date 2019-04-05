@@ -1,9 +1,9 @@
 [Unit]
 Description=Consul Template Jobs
+Requires=consul.service
 
 [Service]
 Type=simple
-Requires=consul.service
 ExecStart="{{ CONSUL_BIN_FILE }}" -config "{{ CONSUL_TEMPLATE_CONFIG_PATH }}/{{ CONSUL_TEMPLATE_CONFIG }}"
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -15 $MAINPID
