@@ -90,7 +90,7 @@ platforms:
       - consul_instances
 provisioner:
   name: ansible
-  log: false
+  log: true
   # config_options:
   #   defaults:
   #     callback_whitelist: profile_tasks,timer
