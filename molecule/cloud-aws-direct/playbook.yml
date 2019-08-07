@@ -1,6 +1,14 @@
 ---
 - name: Converge
   hosts: all
+  pre_tasks:
+    - name: Add Consul user
+      user:
+        name: consul
+        comment: "Consul user"
+        group: bin
+        system: true
+      become: true
   roles:
     - role: brianshumate.consul
       consul_group_name: consul_instances
