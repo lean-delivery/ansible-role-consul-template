@@ -3,7 +3,7 @@ bin_dir: /usr/local/bin
 start_script_path: /etc/systemd/system
 consul_template_version: 0.20.0
 consul_template_config_path: /etc/consul-template
-consul_template_zip: 'consul-template_{{consul_template_version}}_linux_amd64.zip'
+consul_template_zip: 'consul-template_{{ consul_template_version }}_linux_amd64.zip'
 consul_template_url: 'https://releases.hashicorp.com/consul-template/{{ consul_template_version }}/{{ consul_template_zip }}'
 consul_template_user: consul
 consul_template_additional_groups: []
