@@ -48,7 +48,7 @@ AWS ansible-role-consul-template:
   tags:
     - aws
 
-.EPC ansible-role-consul-template:
+EPC ansible-role-consul-template:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
