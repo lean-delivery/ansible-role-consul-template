@@ -1,12 +1,12 @@
 ---
 - name: Converge
   hosts: consul_instances
-  pre_tasks:
-    - name: Add unzip
-      package:
-        name: unzip
-        state: present
-      become: true
+  # pre_tasks:
+  #   - name: Add unzip
+  #     package:
+  #       name: unzip
+  #       state: present
+  #     become: true
   become: true
   become_user: root
   roles:
