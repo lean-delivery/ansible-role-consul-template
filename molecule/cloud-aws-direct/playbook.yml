@@ -9,10 +9,10 @@
   #       group: bin
   #       system: true
   #     become: true
+  become: true
   roles:
     - role: brianshumate.consul
       consul_group_name: consul_instances
-      become: true
     - role: ansible-role-consul-template
   vars:
     consul_bind_address: !unsafe '{{ GetPrivateIP }}'
