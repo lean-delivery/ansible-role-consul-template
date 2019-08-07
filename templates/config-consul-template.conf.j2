@@ -22,12 +22,12 @@ syslog {
 }
 
 exec {
-  command = "{{ CONSUL_BIN_FILE }}"
+  command = "{{ consul_bin_file }}"
   splay = "5s"
 
   env {
     pristine = false
-    custom = ["PATH=$PATH:{{ CONSUL_BIN_FILE }}"]
+    custom = ["PATH=$PATH:{{ consul_bin_file }}"]
   }
 
   reload_signal = ""
@@ -36,8 +36,8 @@ exec {
 }
 
 template {
-  source = "{{ CONSUL_QUOTA_DIR }}/{{ CONSUL_TPL_CONFIG }}"
-  destination = "{{ CONSUL_QUOTA_DIR }}/{{ CONSUL_XML_CONFIG }}"
+  source = "{{ consul_quota_dir }}/{{ consul_tpl_config }}"
+  destination = "{{ consul_quota_dir }}/{{ consul_xml_config }}"
   create_dest_dirs = true
   command = "service ggr restart"
   command_timeout = "60s"

@@ -4,7 +4,7 @@ Requires=consul.service
 
 [Service]
 Type=simple
-ExecStart="{{ CONSUL_BIN_FILE }}" -config "{{ CONSUL_TEMPLATE_CONFIG_PATH }}/{{ CONSUL_TEMPLATE_CONFIG }}"
+ExecStart="{{ consul_bin_file }}" -config "{{ consul_template_config_path }}/{{ consul_template_config }}"
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -15 $MAINPID
 Restart=always

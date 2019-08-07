@@ -1,14 +1,14 @@
 ---
-BIN_DIR: "/usr/local/bin"
-START_SCRIPT_PATH: "/etc/systemd/system"
-CONSUL_TEMPLATE_VERSION: "0.20.0"
-CONSUL_TEMPLATE_CONFIG_PATH: "/etc/consul-template"
-CONSUL_TEMPLATE_ZIP: "consul-template_{{CONSUL_TEMPLATE_VERSION}}_linux_amd64.zip"
-CONSUL_TEMPLATE_URL: "https://releases.hashicorp.com/consul-template/{{ CONSUL_TEMPLATE_VERSION }}/{{ CONSUL_TEMPLATE_ZIP }}"
-CONSUL_TEMPLATE_USER: "consul"
-CONSUL_TEMPLATE_ADDITIONAL_GROUPS: []
-CONSUL_QUOTA_DIR: "/home/ggr/go-grid-router/quota"
-CONSUL_BIN_FILE: "{{ BIN_DIR }}/consul-template"
-CONSUL_TPL_CONFIG: "ggr-config-consul-template.tpl"
-CONSUL_XML_CONFIG: "ggr-users.xml"
-CONSUL_TEMPLATE_CONFIG: 'config-consul-template.conf'
+bin_dir: /usr/local/bin
+start_script_path: /etc/systemd/system
+consul_template_version: 0.20.0
+consul_template_config_path: /etc/consul-template
+consul_template_zip: 'consul-template_{{consul_template_version}}_linux_amd64.zip'
+consul_template_url: 'https://releases.hashicorp.com/consul-template/{{ consul_template_version }}/{{ consul_template_zip }}'
+consul_template_user: consul
+consul_template_additional_groups: []
+consul_quota_dir: /home/ggr/go-grid-router/quota
+consul_bin_file: '{{ bin_dir }}/consul-template'
+consul_tpl_config: ggr-config-consul-template.tpl
+consul_xml_config: ggr-users.xml
+consul_template_config: config-consul-template.conf

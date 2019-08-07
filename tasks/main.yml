@@ -1,32 +1,32 @@
 ---
 - name: Download and Unarchive a file consul-template
   unarchive:
-    src: "{{ CONSUL_TEMPLATE_URL }}"
-    dest: "{{ BIN_DIR }}"
+    src: "{{ consul_template_url }}"
+    dest: "{{ bin_dir }}"
     remote_src: yes
-    owner: "{{ CONSUL_TEMPLATE_USER }}"
+    owner: "{{ consul_template_user }}"
     mode: 0755
   become: true
 
 - name: Create configuration directory
   file:
-    path: "{{ CONSUL_TEMPLATE_CONFIG_PATH }}"
-    owner: "{{ CONSUL_TEMPLATE_USER }}"
+    path: "{{ consul_template_config_path }}"
+    owner: "{{ consul_template_user }}"
     state: directory
 
 - name: Copy config file for consul-template
   template:
-    src: "{{ CONSUL_TEMPLATE_CONFIG }}.j2"
-    dest: "{{ CONSUL_TEMPLATE_CONFIG_PATH }}/{{ CONSUL_TEMPLATE_CONFIG }}"
-    owner: "{{ CONSUL_TEMPLATE_USER }}"
+    src: "{{ consul_template_config }}.j2"
+    dest: "{{ consul_template_config_path }}/{{ consul_template_config }}"
+    owner: "{{ consul_template_user }}"
     mode: 0755
   become: true
 
 - name: Create service
   template:
     src: consul-template.service.j2
-    dest: "{{ START_SCRIPT_PATH }}/consul-template.service"
-    owner: "{{ CONSUL_TEMPLATE_USER }}"
+    dest: "{{ start_script_path }}/consul-template.service"
+    owner: "{{ consul_template_user }}"
     mode: 0774
   become: true
   notify:
@@ -35,4 +35,4 @@
 - name: Add additional groups for user 'consul'
   user:
     name: consul
-    groups: "{{ CONSUL_TEMPLATE_ADDITIONAL_GROUPS }}"
+    groups: "{{ consul_template_additional_groups }}"
