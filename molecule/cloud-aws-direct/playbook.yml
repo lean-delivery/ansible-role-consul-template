@@ -13,9 +13,9 @@
     - role: brianshumate.consul
       consul_group_name: consul_instances
     - role: ansible-role-consul-template
-  # vars:
-  #   consul_bind_address: !unsafe '{{ GetPrivateIP }}'
-  #   consul_bin_path: /usr/local/bin
-  #   consul_retry_join_skip_hosts: true
-  #   consul_template_additional_groups:
-  #     - ggr
+  vars:
+    consul_bind_address: !unsafe '{{ GetPrivateIP }}'
+    consul_bin_path: /usr/local/bin
+    consul_retry_join_skip_hosts: true
+    consul_template_additional_groups:
+      - ggr
