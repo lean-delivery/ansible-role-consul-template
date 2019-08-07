@@ -1,3 +1,2 @@
 ---
-- name: ansible-consul
-  src: brianshumate.consul
+- src: brianshumate.consul
