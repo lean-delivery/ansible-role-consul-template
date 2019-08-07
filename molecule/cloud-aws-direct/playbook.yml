@@ -16,7 +16,6 @@
     - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
-    is_virtualenv: true
   #   consul_bind_address: !unsafe '{{ GetPrivateIP }}'
   #   consul_bin_path: /usr/local/bin
   #   consul_retry_join_skip_hosts: true

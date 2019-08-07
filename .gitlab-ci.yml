@@ -10,7 +10,7 @@ stages:
 
 before_script:
   - apk add --no-cache unzip
-  # - pip install netaddr
+  - pip install netaddr
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
