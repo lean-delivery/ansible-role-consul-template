@@ -9,10 +9,11 @@
   #     become: true
   become: true
   become_user: root
+  any_errors_fatal: true
   roles:
     - role: brianshumate.consul
       consul_group_name: consul_instances
-  #   - role: ansible-role-consul-template
+    - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
   #   consul_bind_address: !unsafe '{{ GetPrivateIP }}'
