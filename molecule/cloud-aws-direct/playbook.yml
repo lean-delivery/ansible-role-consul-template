@@ -1,12 +1,6 @@
 ---
 - name: Converge
   hosts: consul_instances
-  # pre_tasks:
-  #   - name: Add unzip
-  #     package:
-  #       name: unzip
-  #       state: present
-  #     become: true
   become: true
   become_user: root
   any_errors_fatal: true
@@ -16,8 +10,3 @@
     - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
-  #   consul_bind_address: !unsafe '{{ GetPrivateIP }}'
-  #   consul_bin_path: /usr/local/bin
-  #   consul_retry_join_skip_hosts: true
-  #   consul_template_additional_groups:
-  #     - ggr
