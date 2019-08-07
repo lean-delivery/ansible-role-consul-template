@@ -53,7 +53,7 @@ EPC ansible-role-consul-template:
     EPC_REGION: EPAM-BY2
   stage: deployment test
   script:
-    - apt-get install unzip
+    - sudo apt-get install unzip
     - molecule test -s cloud-epc-delegated
   tags:
     - delegated
