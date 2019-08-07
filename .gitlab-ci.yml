@@ -9,6 +9,7 @@ stages:
   - deployment test
 
 before_script:
+  - pip install git+git://github.com/ansible/molecule@2.22rc5
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
