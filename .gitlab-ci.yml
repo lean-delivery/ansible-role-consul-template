@@ -9,7 +9,6 @@ stages:
   - deployment test
 
 before_script:
-  - apk add --no-cache unzip
   - pip install netaddr
   - rm -rf molecule/resources/provisioning
   - ansible --version
@@ -44,6 +43,7 @@ AWS ansible-role-consul-template:
     AWS_REGION: us-east-1
   stage: deployment test
   script:
+    - apk add --no-cache unzip
     - molecule test -s cloud-aws-direct
   tags:
     - aws
@@ -53,6 +53,7 @@ EPC ansible-role-consul-template:
     EPC_REGION: EPAM-BY2
   stage: deployment test
   script:
+    - apt-get install unzip
     - molecule test -s cloud-epc-delegated
   tags:
     - delegated
