@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-consul-template/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-consul-template.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-consul-template)
 [![Build Status](https://gitlab.com/lean-delivery/ansible-role-consul-template/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-consul-template/pipelines)
-[![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.consul__template-blue.svg)](https://galaxy.ansible.com/lean_delivery/consul-template)
+[![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.consul__template-blue.svg)](https://galaxy.ansible.com/lean_delivery/consul_template)
 ![Ansible](https://img.shields.io/ansible/role/d/42597.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F42597%2F&query=$.min_ansible_version)
 
