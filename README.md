@@ -1,4 +1,4 @@
-# ansible consul-template role
+# Ansible role for HashiCorp Consul-template
 =========
 
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-consul-template/master/LICENSE)
