@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: consul_template
+  role_name: consul-template
   author: Lean Delivery Team <team@lean-delivery.com>
   description: Yet Another Ansible Role
   license: Apache
@@ -23,7 +23,6 @@ galaxy_info:
         - "all"
   galaxy_tags:
     - development
-    - consul-template
     - consul
     - selenoid
 dependencies: []
