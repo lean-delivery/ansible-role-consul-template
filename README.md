@@ -8,7 +8,7 @@
 ![Ansible](https://img.shields.io/ansible/role/d/42597.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F42597%2F&query=$.min_ansible_version)
 
-Role for consul template configuration
+Role for HashiCorp consul-template configuration
 
 Requirements
 ------------
