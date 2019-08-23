@@ -1,4 +1,20 @@
 ---
+- block:
+    - name: Fetch consul-template release page
+      uri:
+        url: 'https://releases.hashicorp.com/consul-template/'
+        return_content: true
+      register: root_page
+
+    - name: Find latest release version
+      set_fact:
+        consul_latest_release_version: >-
+          {{ root_page['content']
+            | regex_findall('/consul-template/([\.\d]+)/')
+            | first
+          }}
+  when: consul_template_use_latest_version | bool
+
 - name: Download and Unarchive a file consul-template
   unarchive:
     src: '{{ consul_template_url }}'

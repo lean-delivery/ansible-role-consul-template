@@ -1,7 +1,8 @@
 ---
 bin_dir: /usr/local/bin
 start_script_path: /etc/systemd/system
-consul_template_version: 0.21.0
+consul_template_use_latest_version: true
+consul_template_version: '{{ consul_template_use_latest_version | default("0.20.1") }}'
 consul_template_config_path: /etc/consul-template
 consul_template_zip: 'consul-template_{{ consul_template_version }}_linux_amd64.zip'
 consul_template_url: 'https://releases.hashicorp.com/consul-template/{{ consul_template_version }}/{{ consul_template_zip }}'
