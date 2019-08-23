@@ -1,8 +1,8 @@
 ---
 # Run all tests
-# default:
-#   image:
-#     name: leandelivery/docker-ansible-ci:ansible-2.8
+default:
+  image:
+    name: leandelivery/docker-ansible-ci:ansible-2.7
 
 stages:
   - lint
