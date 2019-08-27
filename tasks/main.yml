@@ -30,6 +30,7 @@
     dest: '{{ consul_template_bin_dir }}'
     remote_src: true
     owner: '{{ consul_template_user }}'
+    group: consul
     mode: 0755
   become: true
 
