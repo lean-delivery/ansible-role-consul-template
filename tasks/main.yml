@@ -15,6 +15,10 @@
           }}
   when: consul_template_use_latest_version | bool
 
+- name: Show consul_template_version
+  debug:
+    var: consul_template_version
+
 - name: Fetch SHA page
   uri:
     url: 'https://releases.hashicorp.com/consul-template/{{ consul_template_version }}/consul-template_{{ consul_template_version }}_SHA256SUMS'
@@ -28,10 +32,6 @@
         | regex_findall('([A-Fa-f0-9]{64})\s+consul-template_' ~ consul_template_version ~ '_linux_amd64.zip')
         | first
       }}
-
-- name: Debug sha_value
-  debug:
-    var: consul_template_sha_value
 
 - name: Download a file consul-template
   get_url:
