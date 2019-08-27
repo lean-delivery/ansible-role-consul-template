@@ -7,6 +7,7 @@
   roles:
     - role: brianshumate.consul
       consul_group_name: consul_instances
+      consul_configure_syslogd: false
     - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
