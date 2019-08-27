@@ -1,10 +1,53 @@
 ---
-- name: Download and Unarchive a file consul-template
+- block:
+    - name: Fetch consul-template release page
+      uri:
+        url: 'https://releases.hashicorp.com/consul-template/'
+        return_content: true
+      register: root_page
+
+    - name: Find latest release version
+      set_fact:
+        consul_latest_release_version: >-
+          {{ root_page['content']
+            | regex_findall('/consul-template/([\.\d]+)/')
+            | first
+          }}
+  when: consul_template_use_latest_version | bool
+
+- name: Show consul_template_version
+  debug:
+    var: consul_template_version
+
+- name: Fetch SHA page
+  uri:
+    url: 'https://releases.hashicorp.com/consul-template/{{ consul_template_version }}/consul-template_{{ consul_template_version }}_SHA256SUMS'
+    return_content: true
+  register: sha_page
+
+- name: Find SHA
+  set_fact:
+    consul_template_sha_value: >-
+      {{ sha_page['content']
+        | regex_findall('([A-Fa-f0-9]{64})\s+consul-template_' ~ consul_template_version ~ '_linux_amd64.zip')
+        | first
+      }}
+
+- name: Download a file consul-template
+  get_url:
+    url: '{{ consul_template_url }}'
+    dest: '{{ consul_template_download_path }}'
+    checksum: 'sha256:{{ consul_template_sha_value }}'
+  register: file_downloaded
+  retries: 20
+  delay: 5
+  until: file_downloaded is succeeded
+
+- name: Unarchive a file consul-template
   unarchive:
-    src: '{{ consul_template_url }}'
-    dest: '{{ bin_dir }}'
+    src: '{{ consul_template_download_path }}/{{ consul_template_zip }}'
+    dest: '{{ consul_template_bin_dir }}'
     remote_src: true
-    owner: '{{ consul_template_user }}'
     mode: 0755
   become: true
 

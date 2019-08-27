@@ -2,7 +2,7 @@
 # Run all tests
 default:
   image:
-    name: leandelivery/docker-ansible-ci:ansible-2.8
+    name: leandelivery/docker-ansible-ci:ansible-2.7
 
 stages:
   - lint
@@ -34,6 +34,7 @@ Lint:
 Docker ansible-role-consul-template:
   stage: deployment test
   script:
+    - apk add zip
     - molecule test -s default
   tags:
     - aws
@@ -48,7 +49,7 @@ AWS ansible-role-consul-template:
   tags:
     - aws
 
-EPC ansible-role-consul-template:
+.EPC ansible-role-consul-template:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
