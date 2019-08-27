@@ -15,10 +15,29 @@
           }}
   when: consul_template_use_latest_version | bool
 
+- name: Fetch SHA page
+  uri:
+    url: 'https://releases.hashicorp.com/consul-template/{{ consul_template_version }}/consul-template_{{ consul_template_version }}_SHA256SUMS'
+    return_content: true
+  register: sha_page
+
+- name: Find SHA
+  set_fact:
+    consul_template_sha_value: >-
+      {{ sha_page['content']
+        | regex_findall('([A-Fa-f0-9]{64})\s+consul-template_' ~ release_version ~ '_linux_amd64.zip')
+        | first
+      }}
+
+- name: Debug sha_value
+  debug:
+    var: consul_template_sha_value
+
 - name: Download a file consul-template
   get_url:
     url: '{{ consul_template_url }}'
     dest: '{{ consul_template_download_path }}'
+    checksum: 'sha256:{{ consul_template_sha_value }}'
   register: file_downloaded
   retries: 20
   delay: 5
@@ -29,7 +48,6 @@
     src: '{{ consul_template_download_path }}/{{ consul_template_zip }}'
     dest: '{{ consul_template_bin_dir }}'
     remote_src: true
-    # owner: '{{ consul_template_user }}'
     mode: 0755
   become: true
 
