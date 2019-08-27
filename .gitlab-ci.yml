@@ -34,6 +34,7 @@ Lint:
 Docker ansible-role-consul-template:
   stage: deployment test
   script:
+    - apk add zip
     - molecule test -s default
   tags:
     - aws
