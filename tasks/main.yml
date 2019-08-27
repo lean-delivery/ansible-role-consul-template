@@ -25,7 +25,7 @@
   set_fact:
     consul_template_sha_value: >-
       {{ sha_page['content']
-        | regex_findall('([A-Fa-f0-9]{64})\s+consul-template_' ~ release_version ~ '_linux_amd64.zip')
+        | regex_findall('([A-Fa-f0-9]{64})\s+consul-template_' ~ consul_template_version ~ '_linux_amd64.zip')
         | first
       }}
 
