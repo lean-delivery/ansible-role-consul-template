@@ -28,12 +28,14 @@ Requirements
 Role Variables
 --------------
 
-  - `bin_dir` - path to consul binaries.   
+  - `consul_template_bin_dir` - path to consul binaries.   
     Default is `/usr/local/bin`.
   - `start_script_path` - path to service scripts.   
     Default is `/etc/systemd/system`.
   - `consul_template_version` - version of consul-template.   
     Default: `0.20.0`.
+  - `consul_template_download_path` - path to download source of consul-template before install   
+    Default: `/tmp`.
   - `consul_template_config_path` - path to consul template config files.   
     Default is `/etc/consul-template`.
   - `consul_template_zip` - consul template archive name.   
@@ -45,7 +47,7 @@ Role Variables
   - `consul_quota_dir` - directory to store quota file.   
     Default: `/home/ggr/go-grid-router/quota`.
   - `consul_bin_file` - consul binary file path.   
-    Default: `{{ bin_dir }}/consul-template`.
+    Default: `{{ consul_template_bin_dir }}/consul-template`.
   - `consul_template_config` - consul tempate config name.   
     Default: `config-consul-template.conf`.
   - `consul_tpl_config` - grid router config template.   

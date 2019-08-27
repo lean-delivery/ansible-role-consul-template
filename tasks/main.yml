@@ -15,10 +15,19 @@
           }}
   when: consul_template_use_latest_version | bool
 
-- name: Download and Unarchive a file consul-template
+- name: Download a file consul-template
+  get_url:
+    url: '{{ consul_template_url }}'
+    dest: '{{ consul_template_download_path }}'
+  register: file_downloaded
+  retries: 20
+  delay: 5
+  until: file_downloaded is succeeded
+
+- name: Unarchive a file consul-template
   unarchive:
-    src: '{{ consul_template_url }}'
-    dest: '{{ bin_dir }}'
+    src: '{{ consul_template_download_path }}/{{ consul_template_zip }}'
+    dest: '{{ consul_template_bin_dir }}'
     remote_src: true
     owner: '{{ consul_template_user }}'
     mode: 0755
