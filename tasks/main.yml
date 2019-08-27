@@ -29,8 +29,7 @@
     src: '{{ consul_template_download_path }}/{{ consul_template_zip }}'
     dest: '{{ consul_template_bin_dir }}'
     remote_src: true
-    owner: '{{ consul_template_user }}'
-    group: consul
+    # owner: '{{ consul_template_user }}'
     mode: 0755
   become: true
 
