@@ -4,6 +4,13 @@
 - name: Verify
   hosts: all
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: Gather the package facts
+      package_facts:
+        manager: auto
+
+    - name: Populate service facts
+      service_facts:
+
+    - name: Assert that consul-template.service is running
+      assert:
+        that: "'running' in ansible_facts.services['consul-template.service'].state"
