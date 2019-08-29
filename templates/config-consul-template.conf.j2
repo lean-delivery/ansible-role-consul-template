@@ -39,7 +39,7 @@ template {
   source = "{{ consul_quota_dir }}/{{ consul_tpl_config }}"
   destination = "{{ consul_quota_dir }}/{{ consul_xml_config }}"
   create_dest_dirs = true
-  command = "service ggr reload; service ggr-ui reload"
+  command = "systemctl reload ggr ggr-ui"
   command_timeout = "60s"
   error_on_missing_key = false
   perms = 0644
