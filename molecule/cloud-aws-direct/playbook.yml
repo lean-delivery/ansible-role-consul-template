@@ -7,7 +7,7 @@
   roles:
     - role: brianshumate.consul
       consul_group_name: consul_instances
-    - role: ansible-role-ggr
+    - role: lean_delivery.ggr
     - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
