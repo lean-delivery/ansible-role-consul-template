@@ -1,2 +1,4 @@
 ---
 - src: brianshumate.consul
+- name: ansible-role-ggr
+  src: https://github.com/lean-delivery/ansible-role-ggr

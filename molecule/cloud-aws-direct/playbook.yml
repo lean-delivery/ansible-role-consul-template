@@ -7,8 +7,8 @@
   roles:
     - role: brianshumate.consul
       consul_group_name: consul_instances
+    - role: ansible-role-ggr
     - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
-    consul_template_version: 0.21.0
-    consul_template_use_latest_version: False
+
