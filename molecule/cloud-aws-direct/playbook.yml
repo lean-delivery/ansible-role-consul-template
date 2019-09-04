@@ -11,4 +11,3 @@
     - role: ansible-role-consul-template
   vars:
     consul_raw_key: ''
-
